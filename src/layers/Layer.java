@@ -1,8 +1,8 @@
 package layers;
 
 public abstract class Layer {
-    private Layer previous;
-    private Layer next;
+    private Layer previous = null;
+    private Layer next = null;
     private int size;
 
     public Layer(Layer previous, Layer next) {

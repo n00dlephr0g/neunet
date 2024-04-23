@@ -1,29 +1,37 @@
 package elements;
 
 import functions.OneToOne;
+import functions.Sigmoid;
 
 public class Neuron {
     private double output;
-    private double sum = 0;
-    private final OneToOne function;
+    private double activation = 0;
+    private OneToOne function = new Sigmoid();
 
     public Neuron(OneToOne function) {
         this.function = function;
     }
-    public void add(double value){
-        this.sum += value;
+    public Neuron() {
     }
-    public void setSum(double value){
-        sum = value;
+    public void add(double value){
+        this.activation += value;
+    }
+    public void setActivation(double value){
+        activation = value;
     }
     public double getOutput() {
-        this.output = function.solve(sum);
+        this.output = function.solve(activation);
         return output;
     }
-    public double getSum() {
-        return sum;
+    public double activation() {
+        return activation;
     }
     public void reset(){
-        sum = 0;
+        activation = 0;
+    }
+
+    @Override
+    public String toString() {
+        return activation +"";
     }
 }
