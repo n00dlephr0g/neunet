@@ -2,13 +2,19 @@ package layers;
 
 import elements.Link;
 
-public class LinkLayer {
-    private final LinkLayer previous;
-    private final LinkLayer next;
+public class LinkLayer extends Layer{
     private Link[] links;
-    public LinkLayer(LinkLayer previous, LinkLayer next) {
-        this.previous = previous;
-        this.next = next;
+    public LinkLayer(NeuronLayer previous, NeuronLayer next) {
+        super(previous, next);
+    }
+    public LinkLayer(NeuronLayer previous, NeuronLayer next, Link[] links) {
+        super(previous, next);
+        this.links = links;
+    }
+    public void updateLinks(){
+        for (Link link : this.links){
+            link.update();
+        }
     }
     public void setLinks(Link[] links){
         this.links = links;
@@ -18,11 +24,5 @@ public class LinkLayer {
     }
     public Link getLink(int index){
         return links[index];
-    }
-    public LinkLayer getPrevious() {
-        return previous;
-    }
-    public LinkLayer getNext() {
-        return next;
     }
 }

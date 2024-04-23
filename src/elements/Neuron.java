@@ -1,13 +1,13 @@
 package elements;
 
-import functions.Function;
+import functions.OneToOne;
 
 public class Neuron {
     private double output;
     private double sum;
-    private final Function function;
+    private final OneToOne function;
 
-    public Neuron(Function function) {
+    public Neuron(OneToOne function) {
         this.function = function;
     }
 

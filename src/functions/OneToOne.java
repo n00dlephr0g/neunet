@@ -1,7 +1,7 @@
 package functions;
 
 public interface OneToOne {
-    default double solve(double input){
-        return input;
-    };
+    default double solve(double x){
+        return x;
+    }
 }
