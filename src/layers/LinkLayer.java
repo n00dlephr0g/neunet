@@ -18,6 +18,7 @@ public class LinkLayer extends Layer{
     }
     public void setLinks(Link[] links){
         this.links = links;
+        setSize(this.links.length);
     }
     public Link[] getLinks() {
         return links;

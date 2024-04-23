@@ -9,10 +9,11 @@ public class NeuronLayer extends Layer{
     }
     public NeuronLayer(LinkLayer previous, LinkLayer next, Neuron[] neurons){
         super(previous,next);
-        this.neurons = neurons;
+        setNeurons(neurons);
     }
     public void setNeurons(Neuron[] neurons){
         this.neurons = neurons;
+        setSize(this.neurons.length);
     }
     public Neuron getNeuron(int index){
         return neurons[index];
