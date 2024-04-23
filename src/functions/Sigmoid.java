@@ -1,3 +1,5 @@
+package functions;
+
 import static java.lang.Math.exp;
 
 public class Sigmoid extends Function{

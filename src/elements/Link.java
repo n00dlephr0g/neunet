@@ -1,3 +1,5 @@
+package elements;
+
 public class Link {
     private double weight;
     private Neuron start;

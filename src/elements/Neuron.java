@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package elements;
+
+import functions.Function;
 
 public class Neuron {
     private double output;
