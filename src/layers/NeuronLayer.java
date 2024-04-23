@@ -9,6 +9,9 @@ import java.util.Random;
 public class NeuronLayer extends Layer{
     private Neuron[] neurons;
     private final Random r = new Random();
+    public NeuronLayer() {
+        super();
+    }
     public NeuronLayer(LinkLayer previous, LinkLayer next){
         super(previous,next);
     }
@@ -20,9 +23,7 @@ public class NeuronLayer extends Layer{
 
     public NeuronLayer getNext2() {
         Layer next2 = super.getNext().getNext();
-        if (next2.getClass() == NeuronLayer.class)
-            return (NeuronLayer) next2;
-        return null;
+        return (NeuronLayer) next2;
     }
 
     public void setNeurons(Neuron[] neurons){

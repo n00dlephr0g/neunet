@@ -3,26 +3,27 @@ package models;
 import elements.Neuron;
 import layers.*;
 
+import java.util.Arrays;
+
 public abstract class FFModel {
     private InputNeuronLayer inputLayer;
     private OutputNeuronLayer outputLayer;
-
+    private int size;
     public FFModel(InputNeuronLayer inputLayer, OutputNeuronLayer outputLayer) {
         this.inputLayer = inputLayer;
         this.outputLayer = outputLayer;
+        this.size = 2;
     }
 
-    private int size = 0;
     public NeuronLayer get(int index){
-        if (index<size & index>0) {
-            NeuronLayer currentLayer =  inputLayer;
+        NeuronLayer currentLayer = inputLayer;
+        if (index<=size & index>=0) {
             for (int i = 0; i < index; i++) {
-                currentLayer = currentLayer.getNext2();
+                if (currentLayer.getNext2() != null)
+                    currentLayer = currentLayer.getNext2();
             }
-            if (currentLayer.getClass() == NeuronLayer.class)
-                return currentLayer;
         }
-        return null;
+        return currentLayer;
     }
     public void setInputLayer(InputNeuronLayer inputLayer) {
         this.inputLayer = inputLayer;
@@ -34,12 +35,13 @@ public abstract class FFModel {
     }
     public void updateLayers(){
         NeuronLayer currentLayer =  inputLayer;
+        LinkLayer currentLinkLayer = (LinkLayer) currentLayer.getNext();
         while (true) {
-            LinkLayer currentLinkLayer = (LinkLayer) currentLayer.getNext();
             currentLinkLayer.updateLinks();
-            currentLayer = currentLayer.getNext2();
-            if (currentLayer == null)
+            if (currentLayer.getNext2() == null)
                 break;
+            else
+                currentLayer = currentLayer.getNext2();
         }
     }
     public OutputNeuronLayer getOutputLayer() {
@@ -48,8 +50,6 @@ public abstract class FFModel {
     public InputNeuronLayer getInputLayer() {
         return inputLayer;
     }
-
-
 
     public void add(){
         size += 1;

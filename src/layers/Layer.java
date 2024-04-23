@@ -4,7 +4,7 @@ public abstract class Layer {
     private Layer previous = null;
     private Layer next = null;
     private int size;
-
+    public Layer() {}
     public Layer(Layer previous, Layer next) {
         this.previous = previous;
         this.next = next;
