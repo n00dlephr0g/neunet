@@ -1,8 +1,8 @@
 package layers;
 
 public abstract class Layer {
-    private final Layer previous;
-    private final Layer next;
+    private Layer previous;
+    private Layer next;
     private int size;
 
     public Layer(Layer previous, Layer next) {
@@ -13,7 +13,15 @@ public abstract class Layer {
     public void setSize(int size) {
         this.size = size;
     }
-
+    public int size(){
+        return size;
+    }
+    public void setPrevious(Layer layer){
+        previous = layer;
+    }
+    public void setNext(Layer layer){
+        next = layer;
+    }
     public Layer getPrevious() {
         return previous;
     }
