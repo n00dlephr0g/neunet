@@ -1,31 +1,12 @@
-import layers.CompactLayer;
-import layers.InputNeuronLayer;
-import layers.NeuronLayer;
-import layers.OutputNeuronLayer;
-import models.FullModel;
-
-import java.util.Arrays;
+import models.CompactFullModel;
+import tools.Gadget;
 
 public class Run {
     public static void main(String[] args){
-        CompactLayer inputLayer = new CompactLayer(256);
-        inputLayer.updateValues(rar(256));
-        int n=0;
-        CompactLayer currentLayer = inputLayer;
-        while (n<4){
-            CompactLayer newLayer = new CompactLayer(10);
-            newLayer.updateValues(rar(10));
-            currentLayer.linkToRandom(newLayer);
-            currentLayer = newLayer;
-            n++;
-        }
-        CompactLayer result = inputLayer.propagate();
-        System.out.println(result);
+        CompactFullModel dave = new CompactFullModel(256,10,16,3);
+        dave.compute(Gadget.rar(256));
     }
-    public static double[] rar(int size){
-        double[] array = new double[200];
-        Arrays.setAll(array, i -> Math.random());
-        return array;
+
         /*
         InputNeuronLayer a = new InputNeuronLayer();
         OutputNeuronLayer b = new OutputNeuronLayer();
@@ -40,5 +21,5 @@ public class Run {
         double[] out = model.compute(array);
         System.out.println(Arrays.toString(a.getNeurons()) +"\n"+Arrays.toString(out));
          */
-    }
+
 }

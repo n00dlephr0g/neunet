@@ -30,6 +30,7 @@ public class CompactLayer{
     }
     public void linkToRandom(CompactLayer next){
         this.next = next;
+        next.setPrevious(this);
         int size2 = next.size();
         this.links = new Link[size][size2];
         for (int self = 0; self<size; self++){
@@ -42,6 +43,7 @@ public class CompactLayer{
     }
     public void linkTo(CompactLayer next,double weight){
         this.next = next;
+        next.setPrevious(this);
         int size2 = next.size();
         this.links = new Link[size][size2];
         for (int self = 0; self<size; self++){
@@ -80,5 +82,18 @@ public class CompactLayer{
     }
     public int size() {
         return this.size;
+    }
+    public void setPrevious(CompactLayer previous){
+        this.previous = previous;
+    }
+    public Neuron[] getNeurons() {
+        return neurons;
+    }
+    public double[] toArray() {
+        double[] output = new double[size];
+        for (int i = 0; i<size; i++) {
+            output[i] = neurons[i].output();
+        }
+        return output;
     }
 }
