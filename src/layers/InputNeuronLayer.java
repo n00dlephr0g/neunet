@@ -1,7 +1,5 @@
 package layers;
 
-import elements.Neuron;
-
 public class InputNeuronLayer extends NeuronLayer{
     public InputNeuronLayer(){
         super(null,null);
@@ -11,7 +9,7 @@ public class InputNeuronLayer extends NeuronLayer{
     }
     public void updateValues(double[] values){
         for (int i=0;i<(values.length);i++) {
-            get(i).setActivation(values[i]);
+            get(i).activate(values[i]);
         }
     }
 }

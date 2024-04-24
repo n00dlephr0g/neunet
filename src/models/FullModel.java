@@ -16,7 +16,7 @@ public class FullModel extends FFModel {
         getInputLayer().updateValues(input);
         updateLayers();
         for (int i = 0; i<output.length;i++)
-            output[i] = getOutputLayer().get(i).getOutput();
+            output[i] = getOutputLayer().get(i).output();
         return output;
     }
 

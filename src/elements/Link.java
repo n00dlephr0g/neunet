@@ -17,7 +17,7 @@ public class Link {
         this.end = end;
     }
     public void update(){
-        double input = start.getOutput();
+        double input = start.output();
         double output = input * weight;
         end.add(output);
     }

@@ -4,10 +4,8 @@ import functions.OneToOne;
 import functions.Sigmoid;
 
 public class Neuron {
-    private double output;
     private double activation = 0;
     private OneToOne function = new Sigmoid();
-
     public Neuron(OneToOne function) {
         this.function = function;
     }
@@ -16,20 +14,15 @@ public class Neuron {
     public void add(double value){
         this.activation += value;
     }
-    public void setActivation(double value){
+    public void activate(double value){
         activation = value;
     }
-    public double getOutput() {
-        this.output = function.solve(activation);
-        return output;
-    }
-    public double activation() {
-        return activation;
+    public double output() {
+        return function.solve(activation);
     }
     public void reset(){
         activation = 0;
     }
-
     @Override
     public String toString() {
         return activation +"";
